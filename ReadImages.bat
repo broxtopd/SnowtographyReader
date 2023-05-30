@@ -1,0 +1,2 @@
+python ReadImages.py
+pause

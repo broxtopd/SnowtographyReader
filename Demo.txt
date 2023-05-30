@@ -1,0 +1,56 @@
+DEMO
+
+Double click ReadImages.bat
+In the open dialog box, navigate to DEMO/Images, and click Select folder - this selects the 
+folder to read the snowtography images from
+
+The first image to pop up will be a full image covering multiple snowtography stakes.  Here, we 
+need to follow instructions at the top and draw boxes around each of the stakes by clicking and 
+dragging the mouse.  This will define numbered boxes for each stake.  It is recommended that the
+boxes are drawn generously around the stakes because there can be movement between images (as 
+trees sway in the wind, and sometimes the camera slips a little bit)
+
+Once the boxes are drawn, close the window (using the x in the corner or by pressing ctrl-w).  
+Then, the contents of each box will be drawn, where you will need to mark each stake twice (at 
+different ft increments) so that it can figure out where the increments are.  For example, click 
+the upper side of the top mark, and then type 5 (which tells it that this point corresponds to 
+the 5th ft), then repeat this process for at the top of the bottom most red line (this is the 1 
+ft line).  Once you do this, it will fill in where it thinks the remaining points go.  If you 
+are happy, you can close the window and move to the next stake.  To repeat the process to get a 
+better result, click anywhere on the image, and it will allow you to do it again.
+
+Repeat for the remaining stakes.  Note that sometimes, the whole stake is not visible, so it may 
+be necessary to pick different ft intervals (e.g. 4 ft and 1 ft).
+
+Next, the program cycles through each stake in each image and asks you to click the depth of 
+snow.  You have some options to skip a stake if an image can't be interpreted, or if needed, 
+moving the markings on the stakes (which is common because there is often some movement as trees 
+sway in the wind). Press "m" to move the markings (which will allow you to adjust the point of 
+the top stake that you clicked in the previous step), press "w" to mark a measurement as missing
+for a particular day (it will not try to interpret this stake using other images for this date), 
+or close the window to mark a measurement as missing for this image (but in this case, the 
+program will try to use another image on this date to fill in the value for this stake).  
+Clicking below the lowest depth is equivalent to having zero depth.  Note again that the 
+instructions above the image tell what to do.
+
+Note that this program creates two files next to the image directory.  One, <ImageDir>_info.mat, 
+contains the information about where the stakes are located in the images, and the other, 
+<ImageDir>_data.csv, contain the actual snow depth values.  Both files are updated as the 
+program proceeds, so program execution can be resumed at any point (though note that snow depths 
+for a given date are written all at once, so a partially completed data that is interrupted 
+would need to be reanalyzed).
+
+Other Tips:
+- As snow depths are analyzed, the command line output shows the value of the clicked snow 
+depths so they can be verified.
+- <ImageDir>_data.csv can be inspected and edited externally (e.g. if you make a mistake), but 
+remember to close the file (because Windows is restrictive about file locks)
+- On many days, it is probably necessary to make small adjustments to the camera positioning 
+(e.g. press "m" and realign the the tick marks to the top of the markings on the stake), though 
+this likely only has to be done to the first stake, bucause this shift is also applied to the 
+other stakes
+- If the camera moves too much on a given day, it may be necessary to reset the stake 
+positions.  This can either be done as the program loads (when it asks if the boxes are in the 
+right locations, or by manually removing <ImageDir>_info.mat and restarting the program
+- Closing the command window (or typing ctrl-c) will halt the program
+
